@@ -1,26 +1,46 @@
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+void    ft_printf_handler(t_settings *settings)
 {
-	// Creation structure d'acceuil
+	int	i;
 	
-	// Assigner format et fd
+	i = 0;
+	while (settings->format[i] != '\0')
+	{
+		if (settings->format[i] != '%')
+		{
+			ft_putchar_fd(settings->format[i], FD);
+			settings->written++;
+			i++;
+		}
+		else if (settings->format[i] == '%')
+		{
+			i++;
+            ft_printf_flag_handler(settings, i);
+		}
+	}
+}
 
-	// va_start dans structure d'acceuil
+int    ft_printf(const char *format, ...)
+{
+    t_settings    settings;
+    
+    settings.written = 0;
+    settings.format = format;
 
-	// printf handle
+    va_start(settings.parameters, format);
 
-	// va_end
+    ft_printf_handler(&settings);
+    va_end(settings.parameters);
 
-	// Return written
-	printf("Format : %s", format);
-	printf("\nLEN : %zu", ft_strlen(format));
-	return (0);
+    return (settings.written);
 }
 
 int main()
 {
-	char	s[] = "ich bin meine maschine";
-	ft_printf("%s ich bin meine mashine", s);
-
+    char   s[] = "modern";
+    //int    i = 2;
+    printf("\n====================RESULT==================\n");
+    ft_printf("ich bin meine %s mashine n°%d\n", s, 444);
+    //printf("test %0*i", 100, i);
 }
