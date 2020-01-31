@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void    ft_printf_handler(t_settings *settings)
+int    ft_printf_handler(t_settings *settings)
 {
 	int	i;
 	
@@ -16,9 +16,10 @@ void    ft_printf_handler(t_settings *settings)
 		else if (settings->format[i] == '%')
 		{
 			i++;
-            ft_printf_flag_handler(settings, i);
+            i = ft_handle_flags(settings, i);
 		}
 	}
+	return (1);
 }
 
 int    ft_printf(const char *format, ...)
@@ -31,6 +32,7 @@ int    ft_printf(const char *format, ...)
     va_start(settings.parameters, format);
 
     ft_printf_handler(&settings);
+
     va_end(settings.parameters);
 
     return (settings.written);
@@ -38,9 +40,9 @@ int    ft_printf(const char *format, ...)
 
 int main()
 {
-    char   s[] = "modern";
-    //int    i = 2;
+    //char   s[] = "modern";
+    int    i = 20;
     printf("\n====================RESULT==================\n");
-    ft_printf("ich bin meine %s mashine n°%d\n", s, 444);
-    //printf("test %0*i", 100, i);
+    ft_printf("ich bin meine n°%.d\n", i);
+    //printf("test%*s", 2, s);
 }

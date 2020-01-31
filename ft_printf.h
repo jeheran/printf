@@ -2,7 +2,6 @@
 # define FT_PRINTF_H
 
 # include "./libft/libft.h"
-# include "ft_printf_flag_handler.c"
 # include <stdarg.h>
 # include <stdio.h>
 
@@ -14,33 +13,27 @@
 */
 typedef struct		s_settings 
 {
-	int			written;
-	const char	*format;
-	va_list		parameters;
+	int				written;
+	const char		*format;
+	va_list			parameters;
 
 } 					t_settings;
 
 typedef struct 		s_flags
 {
-	char		letter;
-	int			valid;
-	int			minus_sign_used;
-	int			side;
-	char		padding_char;
-	int			width_enabled;
-	int			width;
-	int			width_negative;
-	int			precision_enabled;
-	int			precision;
-	int			precision_negative;
-	int			hashtag;
-	int			hex__upper;
+	int				padding_left_minus_sign;
+	int				width_on;
+	int				width;
+	char			pading_character;
+	int				precision_on;
+	int				precision;
+
 }					t_flags;
 
 /*
 ** ___________ FUNCTION __________
 */
 
-//void    ft_handle_flags(t_settings *settings, int i);
+int    				ft_handle_flags(t_settings *settings, int i);
 
 #endif

@@ -1,7 +1,7 @@
 NAME		= libftprintf.a
 LIBFT		= libft
 LIBFT_LIB	= libft.a
-SRCS		= ft_printf.c
+SRCS		= ft_printf.c ft_printf_flag_handler.c
 				
 
 OBJS		= $(SRCS:.c=.o)
