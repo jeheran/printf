@@ -35,5 +35,7 @@ typedef struct 		s_flags
 */
 
 int    				ft_handle_flags(t_settings *settings, int i);
+void    			ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv);
+
 
 #endif

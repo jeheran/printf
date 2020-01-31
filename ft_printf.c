@@ -43,6 +43,6 @@ int main()
     //char   s[] = "modern";
     int    i = 20;
     printf("\n====================RESULT==================\n");
-    ft_printf("ich bin meine n°%.d\n", i);
+    ft_printf("ich bin meine %s maschine n°%d.\n", i);
     //printf("test%*s", 2, s);
 }

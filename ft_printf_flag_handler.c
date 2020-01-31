@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:50:06 by jherelle          #+#    #+#             */
-/*   Updated: 2020/01/31 18:02:21 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/01/31 19:02:08 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int ft_handle_flags(t_settings *settings, int i)
     ft_set_flags(&flags);
     while(ft_strchr(FORMAT_TYPES, settings->format[i]) == NULL)
     {
+        printf("####### NEW INSTANCE ########\n");
         //TODO re-organise in controller
         if (settings->format[i] == '-')
         {
@@ -82,15 +83,10 @@ int ft_handle_flags(t_settings *settings, int i)
     }
 
     // Deal with conversion
-    printf("\nCONV ==> %c\n", settings->format[i]);
+    //printf("\nCONV ==> %c\n", settings->format[i]);
+    printf("%c", settings->format[i]);
+    ft_printf_conv_handler(settings, &flags, settings->format[i]);
     i++;
-
-    printf("\nPADDING LEFT : %d\n", flags.padding_left_minus_sign);
-    printf("\nWIDTH : %d\n", flags.width);
-    printf("\nWIDTH_ON : %d\n", flags.width_on);
-    printf("\nPADDING CHAR : %d\n", flags.pading_character);
-    printf("\nPRECISION : %d\n", flags.precision);
-    printf("\nPRECISION_on : %d\n", flags.precision_on);
 
     return (i);
 }
