@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:50:06 by jherelle          #+#    #+#             */
-/*   Updated: 2020/01/31 19:02:08 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/03 15:53:10 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int ft_handle_flags(t_settings *settings, int i)
     ft_set_flags(&flags);
     while(ft_strchr(FORMAT_TYPES, settings->format[i]) == NULL)
     {
-        printf("####### NEW INSTANCE ########\n");
+        //printf("\n####### NEW INSTANCE ########\n");
         //TODO re-organise in controller
         if (settings->format[i] == '-')
         {
@@ -80,11 +80,15 @@ int ft_handle_flags(t_settings *settings, int i)
                 i++;
             flags.precision = ft_atoi(ft_substr(settings->format, start, (i - start)));
         }
+        if (flags.precision < 0)
+        {
+            flags.precision = 0;
+            flags.precision_on = 0;
+        }
     }
 
     // Deal with conversion
-    //printf("\nCONV ==> %c\n", settings->format[i]);
-    printf("%c", settings->format[i]);
+    //printf("\nCONV ====> %c\n", settings->format[i]);
     ft_printf_conv_handler(settings, &flags, settings->format[i]);
     i++;
 

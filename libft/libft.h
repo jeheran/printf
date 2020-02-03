@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalendi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:16:24 by lcalendi          #+#    #+#             */
-/*   Updated: 2019/11/12 14:59:02 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/03 11:54:14 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(f)(void *), void (*del)(void *));
+int 			ft_abs_value(int a);
+
 
 #endif

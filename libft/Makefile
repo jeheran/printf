@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jherelle <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 19:23:05 by jherelle          #+#    #+#              #
-#    Updated: 2019/11/12 15:02:50 by jherelle         ###   ########.fr        #
+#    Updated: 2020/02/03 11:50:11 by jherelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC += ft_putstr_fd.c
 SRC += ft_putendl_fd.c
 SRC += ft_putnbr_fd.c
 SRC += ft_split.c
+SRC += ft_abs_value.c
 
 #--------------List-------------#
 SRC_BONUS = ft_lstnew.c
