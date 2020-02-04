@@ -42,7 +42,7 @@ void	ft_printf_tester()
 {
     char	s[] = "modern";
 	//char	c = 'Y';
-	char	vide[] = "";
+	char	vide[] = "yo";
 
 	printf("________TESTING_WIDTH_STRING_______\n");
 	fflush(stdout);
@@ -177,21 +177,51 @@ void	ft_printf_tester()
 	printf("==>PRINTF: test%5.10s\n", vide);
 	fflush(stdout);
 
-	//ft_printf("ft_printf: test%10.5s\n", s);
+	ft_printf("ft_printf: test%10.5s\n", s);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%10.5s\n", s);
-	//ft_printf("ft_printf: test%10.5s\n", vide);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%10.5s\n", vide);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%10.5s\n", vide);
-	//ft_printf("ft_printf: test%2.5s\n", vide);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%2.5s\n", vide);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%2.5s\n", vide);
-	//ft_printf("ft_printf: test%20.5s\n", vide);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%20.5s\n", vide);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%20.5s\n", vide);
-	//ft_printf("ft_printf: test%-1.*s\n", 0, vide);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%-1.*s\n", 0, vide);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%-1.*s\n", 0, vide);
-	//ft_printf("ft_printf: test%*.*s\n",10, 0, s);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%*.*s\n",10, 0, s);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%*.*s\n",10, 0, s);
-	//ft_printf("ft_printf: test%*.*s\n",-5, -2, s);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%*.*s\n",-5, -2, s);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%*.*s\n",-5, -2, s);
-	//ft_printf("ft_printf: test%-10.10s\n", s);
+	fflush(stdout);
+
+	ft_printf("ft_printf: test%-10.10s\n", s);
+	fflush(stdout);
+
 	printf("==>PRINTF: test%-10.10s\n", s);
 
 	/*printf("________TESTING_WIDTH_CHAR_______\n");

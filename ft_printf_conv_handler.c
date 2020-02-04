@@ -10,73 +10,30 @@ void    ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv)
     i = 0;
     j = 0;
     total_len = 0;
-    str = va_arg(settings->parameters, char*);
     if (conv == 's')
     {
-        //affectation de la len totale
-        if (flags->width > (int)ft_strlen(str))
-            total_len = flags->width;
+        if (flags->precision_on == 1)
+            str = ft_substr(va_arg(settings->parameters, char*), 0, flags->precision);
         else
-            total_len = (int)ft_strlen(str);
-        if (flags->precision_on == 1 && flags->precision < flags->width)
-            total_len = flags->width;
-        else if (flags->precision_on == 1 && flags->precision >= flags->width)
-            total_len = flags->precision;
-
-        //si pas de moins
-        if (flags->padding_left_minus_sign == 0)
-        {
-            if (flags->precision_on == 1 && flags->precision < flags->width)
-            {
-                while(total_len > flags->precision)
-                {
-                    ft_putchar_fd(flags->pading_character, FD);
-                    total_len--;
-                }
-            }
-            else
-            {
-                while(total_len > (int)ft_strlen(str))
-                {
-                    ft_putchar_fd(flags->pading_character, FD);
-                    total_len--;
-                }
-            }
-        }
-
-        //ecrire str en entier
-        while (str[i] && total_len > 0)
-        {
-            ft_putchar_fd(str[i], FD);
-            i++;
-            total_len--;
-        }
+           str = va_arg(settings->parameters, char*);
         
-        //si '-'
-        if (flags->padding_left_minus_sign == 1)
+        if ((total_len = flags->width - (int)ft_strlen(str)) > 0 && flags->padding_left_minus_sign == 0)
         {
-            if ((int)ft_strlen(str) < flags->precision)
+            while (total_len > 0)
             {
-                total_len = flags->precision;
-                while (total_len > 0)
-                {
-                    ft_putchar_fd(flags->pading_character, FD);
-                    total_len--;
-                }
-            }
-            else
-            {
-                while (total_len > 0)
-                {
-                    ft_putchar_fd(flags->pading_character, FD);
-                    total_len--;
-                }
+                ft_putchar_fd(flags->pading_character, FD);
+                total_len--;
             }
         }
-
-        //si pas de width
-
-        //si combo
+        ft_putstr_fd(str, FD);
+        if ((total_len = flags->width - (int)ft_strlen(str)) > 0 && flags->padding_left_minus_sign == 1)
+        {
+            while (total_len > 0)
+            {
+                ft_putchar_fd(flags->pading_character, FD);
+                total_len--;
+            }
+        }
     }
 
     /*printf("\nINSTANCE PARAMETERS\n");
