@@ -6,7 +6,7 @@
 /*   By: ecaceres <ecaceres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:44:39 by ecaceres          #+#    #+#             */
-/*   Updated: 2020/02/04 14:43:57 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/05 16:42:29 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include "../libft/libft.h"
-#include "../ft_printf.h"
+int ft_printf(const char *, ...);
 
 #define LIBC_PRINTF_FILE "libc_output.txt"
 #define FT_PRINTF_FILE "user_output.txt"
@@ -66,7 +65,7 @@ void	compare(char *format, int line, int libc_return, int ft_return)
 	int		code;
 
 	code = system("diff "FT_PRINTF_FILE" "LIBC_PRINTF_FILE" > /dev/null");
-	if (code == 0 && (libc_return == ft_return))
+	if (code == 0 && ((libc_return == ft_return) || 0))
 	{
 		g_test_count_passed++;
 		printf("\033[90G%s\033[94G\033[0;32m %s\033[0m\033[0m\n", "✅", "SUCCESS");
@@ -76,7 +75,7 @@ void	compare(char *format, int line, int libc_return, int ft_return)
 	{
 		printf("\033[90G%s\033[94G\033[0;32m %s, cause: %s, test at line %d\033[0m\033[0m\n", "❌", "DIFF", (libc_return == ft_return) ? "CONTENT" : "RETURN", line);
 		fflush(stdout);
-		exit(1);
+		//exit(1);
 	}
 }
 

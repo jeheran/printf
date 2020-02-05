@@ -7,9 +7,9 @@ SRCS		= ft_printf.c ft_printf_flag_handler.c ft_printf_conv_handler.c
 OBJS		= $(SRCS:.c=.o)
 RM		= rm -f
 LIBC		= ar -rcs
-FLAGS		= -Wall -Wextra -Werror -O3 -g3
+FLAGS		= -w -g3  #-Wall -Wextra -Werror -g3
 INCS		= .
-COMPILER	= cc
+COMPILER	= gcc
 
 .c.o:
 	${COMPILER} ${FLAGS} -c $< -o ${<:.c=.o} -I${INCS}
@@ -33,8 +33,8 @@ re: fclean all
 
 bonus: all
 
-test:
-	g${COMPILER} ${FLAGS} $(NAME) -L. $(SRC)
+test: all
+	${COMPILER} ${FLAGS} $(NAME) ./tests/main.c -L. $(SRC)
 	./a.out
 
 .PHONY: all clean fclean re .c.o bonus
