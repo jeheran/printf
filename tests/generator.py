@@ -14,7 +14,7 @@ with open("main.c", "w") as file:
         if ' ' in format or '+' in format or '#' in format:
             continue
 
-        if 's' not in format:
+        if 'c' not in format:
             continue
 
         line = "DO_TEST(__LINE__, \"{}\",{});".format(format, arguments)

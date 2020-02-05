@@ -5,6 +5,7 @@ void    ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv)
     int     i;
     int     total_len;
     char    *str;
+    char    car;
 
     i = -1;
     total_len = 0;
@@ -42,6 +43,30 @@ void    ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv)
 
         if (flags->precision_on == 1)
             free(str);
+    }
+    if (conv == 'c')
+    {
+        car = va_arg(settings->parameters, char);
+        total_len = flags->width;
+        settings->written += total_len;
+        if (flags->padding_left_minus_sign == 0)
+        {
+            while (total_len > 1)
+            {
+                ft_putchar_fd(flags->pading_character, FD);
+                total_len--;
+            }
+        }
+        ft_putchar_fd(car, FD);
+        total_len--;
+        if (flags->padding_left_minus_sign == 1)
+        {
+            while ((total_len = flags->width) > 1)
+            {
+                ft_putchar_fd(flags->pading_character, FD);
+                total_len--;
+            }
+        }
     }
 
     /*printf("\nINSTANCE PARAMETERS\n");

@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:44:39 by ecaceres          #+#    #+#             */
-/*   Updated: 2020/02/05 16:19:56 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/05 18:52:40 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ int
 	int r1;
 	int r2;
 
-	X("%3*s", 10, 0);
-	X("%.0*s", 3, 0);
-	X("%*.0*s", 0, -15, "chaussette");
-	X("%*.00*s", 0, -15, "chaussette");
-	X("%.*s", -15, "Un gros test qui marche!");
-	X("%03*s", -15, 0);
-	X("%03*.0*s", -15, 3, 0);
+	X("%30c", 'c');
+	X("%3c", 'd');
+	X("%*.5c", 10, 'g');
+	X("%c", 0);
+
 
 	/*
 		si apres le ., tu a une etoile, --> precision
