@@ -11,7 +11,13 @@ else
 	cmd="gcc $files main.c -w -o a.out"
 fi
 
-echo $cmd
-$cmd
+flag="-D DEBUG=1"
+if [[ "$2" != "DEBUG" ]]
+then
+	flag="-D DEBUG=0"
+fi
 
- ./a.out
+echo $cmd $flag
+$cmd $flag 
+
+./a.out

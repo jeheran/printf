@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:50:06 by jherelle          #+#    #+#             */
-/*   Updated: 2020/02/05 16:22:02 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/06 20:23:03 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void ft_set_flags(t_flags *flags)
 	flags->pading_character = ' ';
 	flags->precision_on = 0;
 	flags->precision = 0;
+	flags->precision_neg = 0;
+
 }    
 
 int ft_handle_flags(t_settings *settings, int i)
@@ -98,13 +100,15 @@ int ft_handle_flags(t_settings *settings, int i)
             if (settings->format[i] == '*')
             {
                 if (numbered && flags.precision == 0)
+                {
                     flags.width = va_arg(settings->parameters, int);
+                    flags.width_on = 1;
+                }
                 else
                     flags.precision = va_arg(settings->parameters, int);
                 i++;
             }
         }
-            
         if (flags.width < 0)
         {
             flags.padding_left_minus_sign = 1;
@@ -115,7 +119,9 @@ int ft_handle_flags(t_settings *settings, int i)
         if (flags.precision < 0)
         {
             flags.precision_on = 0;
-            flags.precision = ft_abs_value(flags.precision);
+            flags.precision = 0;
+            //flags.precision = ft_abs_value(flags.precision);
+            flags.precision_neg = 1; //??
         }
 
         /*if (settings->format[i] == '*')

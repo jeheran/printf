@@ -1,5 +1,12 @@
 #include "ft_printf.h"
 
+int g_debug = 0;
+
+#define F "\t%-30s: "
+#define YN(b) ((b) ? "\e[92myes\e[0m" : "\e[96mno\e[0m")
+
+
+
 void    ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv)
 {
     int     i;
@@ -44,10 +51,12 @@ void    ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv)
         if (flags->precision_on == 1)
             free(str);
     }
-    if (conv == 'c')
+    else if (conv == 'c')
     {
         car = va_arg(settings->parameters, char);
-        total_len = flags->width;
+        total_len = 1;
+        if (flags->width_on == 1 && flags->width > 1)
+            total_len = flags->width;
         settings->written += total_len;
         if (flags->padding_left_minus_sign == 0)
         {
@@ -58,23 +67,104 @@ void    ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv)
             }
         }
         ft_putchar_fd(car, FD);
-        total_len--;
         if (flags->padding_left_minus_sign == 1)
         {
-            while ((total_len = flags->width) > 1)
+            while (total_len > 1)
             {
                 ft_putchar_fd(flags->pading_character, FD);
                 total_len--;
             }
         }
     }
+    else if (conv == 'p')
+    {
+        void *ptr = va_arg(settings->parameters, void*);
+        
+        if (flags->width_on && flags->pading_character == '0' && flags->padding_left_minus_sign == 0)
+        {
+            flags->precision = ft_max(flags->width - 2, flags->precision);
+            flags->width_on = 0;
+            flags->precision_on = 1;
+            flags->width = 0;
+        }
+        int *len;
+        len = 0;
+        if (!(ptr == NULL && flags->precision == 0 && flags->precision_on == 1))
+            ft_nbr_len_base(ptr, "0123456789abcdef", &len);
 
-    /*printf("\nINSTANCE PARAMETERS\n");
-    printf("\n%d\n", settings->written);
-    printf("\nPADDING LEFT : %d\n", flags->padding_left_minus_sign);
-    printf("\nWIDTH : %d\n", flags->width);
-    printf("\nWIDTH_ON : %d\n", flags->width_on);
-    printf("\nPADDING CHAR : %d\n", flags->pading_character);
-    printf("\nPRECISION : %d\n", flags->precision);
-    printf("\nPRECISION_on : %d\n", flags->precision_on);*/
+        if (flags->width_on == 1 && flags->padding_left_minus_sign == 0)
+        {
+            //printf("~~~~~~~~~~");
+            //printf("LEN :%d", len);
+
+            //fflush(stdout);
+
+            if (flags->precision_neg)
+            {
+                //fflush(stdout);
+                //printf("#########");
+                while (++i < (flags->width - (int)len - 2) + (flags->precision_on && flags->width_on && flags->precision != 0)) //- flags->precision))
+                {
+                    //fflush(stdout);
+                    
+                    ft_putchar_fd(flags->pading_character, FD);
+                    //fflush(stdout);
+                    //printf("#########");
+                    
+                    settings->written += 1;
+                }
+            }
+            else
+            {
+                while (++i < (flags->width - 2 - ft_max(flags->precision, len))) //+ (flags->precision_on && flags->width_on && flags->precision != 0))
+                {
+                    //fflush(stdout);
+                    
+                    ft_putchar_fd(flags->pading_character, FD);
+                    //fflush(stdout);
+                    //printf("#########");
+                    
+                    settings->written += 1;
+                }
+            }
+
+        }
+        i = -1;
+        ft_putstr_fd("0x", FD);
+        settings->written += 2;
+        if (flags->precision_on == 1 && flags->precision)
+        {
+            while (++i < (flags->precision - (int)len))
+            {
+                ft_putchar_fd('0', FD);
+                settings->written += 1;
+            }
+        }
+        if (len != 0)
+            ft_putadress_base_fd((unsigned long)ptr, "0123456789abcdef", FD);
+        settings->written += (int)len;
+        i = -1;
+        if (flags->padding_left_minus_sign == 1)
+        {
+            while (++i < (flags->width - 2 - ft_max(flags->precision, (int)len)))
+            {
+                ft_putchar_fd(' ', FD);
+                settings->written += 1;
+            }
+        }
+    }
+
+    if (g_debug)
+    {
+        printf("\n{\n");
+        printf(F"'%d'\t\t\n", "written", settings->written);
+        printf(F"%s\t\t\n", "padding_left_minus_sign", YN(flags->padding_left_minus_sign));
+        printf(F"%d\t\t\n", "width", flags->width);
+        printf(F"%s\t\t\n", "width_on", YN(flags->width_on));
+        printf(F"%d\t\t\n", "precision", flags->precision);
+        printf(F"%s\t\t\n", "precision_on", YN(flags->precision_on));
+        printf(F"%s\t\t\n", "precision_neg", YN(flags->precision_neg));
+        printf(F"'%c'\t\t\n", "padding_char", flags->pading_character);
+        printf("}\n");
+    }
 }

@@ -27,6 +27,8 @@ typedef struct 		s_flags
 	char			pading_character;
 	int				precision_on;
 	int				precision;
+	int				precision_neg;
+
 
 }					t_flags;
 
@@ -37,5 +39,6 @@ typedef struct 		s_flags
 int    				ft_handle_flags(t_settings *settings, int i);
 void    			ft_printf_conv_handler(t_settings *settings, t_flags *flags, char conv);
 
+int g_debug;
 
 #endif

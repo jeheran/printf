@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_template.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecaceres <ecaceres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:44:39 by ecaceres          #+#    #+#             */
-/*   Updated: 2020/02/05 17:13:50 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/06 13:18:08 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	compare(char *format, int line, int libc_return, int ft_return)
 	{
 		printf("\033[90G%s\033[94G\033[0;32m %s, cause: %s, test at line %d\033[0m\033[0m\n", "❌", "DIFF", (libc_return == ft_return) ? "CONTENT" : "RETURN", line);
 		fflush(stdout);
-		//exit(1);
+		exit(1);
 	}
 }
 

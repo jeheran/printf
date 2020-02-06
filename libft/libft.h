@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:16:24 by lcalendi          #+#    #+#             */
-/*   Updated: 2020/02/03 11:54:14 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/06 17:17:50 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(f)(void *), void (*del)(void *));
 int 			ft_abs_value(int a);
+void			ft_putadress_base_fd(unsigned long adress, char *base, int fd);
+void			ft_nbr_len_base(unsigned long adress, char *base, int *len);
+long			ft_max(long a, long b);
 
 
 #endif
