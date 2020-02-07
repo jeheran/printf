@@ -34,7 +34,7 @@ re: fclean all
 bonus: all
 
 test: all
-	${COMPILER} ${FLAGS} $(NAME) ./tests/main.c -L. $(SRC)
+	${COMPILER} ${FLAGS} $(NAME) ./tests/main_flo.c -L. $(SRC)
 	./a.out
 
 .PHONY: all clean fclean re .c.o bonus

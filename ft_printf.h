@@ -5,7 +5,8 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define FORMAT_TYPES "cspdiuxX"
+# define FORMAT_TYPES "cspdiuxX%"
+# define FLAGS_CHARS "-*.0123456789"
 # define FD 1
 
 /*

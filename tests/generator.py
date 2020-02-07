@@ -11,11 +11,11 @@ with open("main.c", "w") as file:
     for match in matches:
         format = match.group(1)
         arguments = match.group(2)
-        if ' ' in format or '+' in format or '#' in format:
+        if ' ' in format or '+' in format or '#' in format or 'o' in format:
             continue
 
-        if 'p' not in format:# and 'c' not in format:
-            continue
+        #if 'c' not in format:
+        #    continue
 
         line = "DO_TEST(__LINE__, \"{}\",{});".format(format, arguments)
         if ("x" in format):

@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 12:50:06 by jherelle          #+#    #+#             */
-/*   Updated: 2020/02/06 20:23:03 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:04:13 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int ft_handle_flags(t_settings *settings, int i)
     start = 0;
     zero_skip = 0;
     ft_set_flags(&flags);
-    while(ft_strchr(FORMAT_TYPES, settings->format[i]) == NULL)
+    while(ft_strchr(FLAGS_CHARS, settings->format[i]) != NULL && ft_strchr(FORMAT_TYPES, settings->format[i]) == NULL)
     {
         //printf("\n####### NEW INSTANCE ########\n");
         //TODO re-organise in controller
