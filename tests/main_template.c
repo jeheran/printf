@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:44:39 by ecaceres          #+#    #+#             */
-/*   Updated: 2020/02/06 13:18:08 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:21:32 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <string.h>
 
 int ft_printf(const char *, ...);
+
 
 #define LIBC_PRINTF_FILE "libc_output.txt"
 #define FT_PRINTF_FILE "user_output.txt"

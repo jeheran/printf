@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 15:25:56 by jherelle          #+#    #+#             */
-/*   Updated: 2020/02/07 15:58:47 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:15:11 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ int		main()
 
 	//TESTS_MAZOISE
 
-	//DO_TEST("%e\n", 0.0);
 	printf("Testing args : \"Simple input test\""); DO_TEST("Simple input test");
 	printf("Testing args : \"%%i, %%d, %%d, %%d, %%d, %%s, %%c, %%d, %%u, %%x, %%X\", i, j, k, l, m, n, c, c, j, j, j"); DO_TEST("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", i, j, k, l, m, n, c, c, j, j, j); //T2
 	printf("Testing args : \"%%0i, %%0d, %%0d, %%0d, %%0d, %%0d\", i, j, k, l, m, c"); DO_TEST("%0i, %0d, %0d, %0d, %0d, %0d", i, j, k, l, m, c); //T3
