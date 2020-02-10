@@ -37,4 +37,7 @@ test: all
 	${COMPILER} ${FLAGS} $(NAME) ./tests/main_flo.c -L. $(SRC)
 	./a.out
 
+norm:
+	norminette -R CheckForbiddenSourceHeader *.c
+
 .PHONY: all clean fclean re .c.o bonus

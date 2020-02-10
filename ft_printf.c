@@ -1,11 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jherelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 11:26:25 by jherelle          #+#    #+#             */
+/*   Updated: 2020/02/10 11:41:40 by jherelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-
-
-int    ft_printf_handler(t_settings *settings)
+int	ft_printf_handler(t_settings *settings)
 {
 	int	i;
-	
+
 	i = 0;
 	while (settings->format[i] != '\0')
 	{
@@ -18,24 +28,20 @@ int    ft_printf_handler(t_settings *settings)
 		else if (settings->format[i] == '%')
 		{
 			i++;
-            i = ft_handle_flags(settings, i);
+			i = ft_handle_flags(settings, i);
 		}
 	}
 	return (1);
 }
 
-int    ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-    t_settings    settings;
-    
-    settings.written = 0;
-    settings.format = format;
+	t_settings	settings;
 
-    va_start(settings.parameters, format);
-
-    ft_printf_handler(&settings);
-
-    va_end(settings.parameters);
-
-    return (settings.written);
+	settings.written = 0;
+	settings.format = format;
+	va_start(settings.parameters, format);
+	ft_printf_handler(&settings);
+	va_end(settings.parameters);
+	return (settings.written);
 }

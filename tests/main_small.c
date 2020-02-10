@@ -6,7 +6,7 @@
 /*   By: jherelle <jherelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:44:39 by ecaceres          #+#    #+#             */
-/*   Updated: 2020/02/07 14:49:54 by jherelle         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:21:16 by jherelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int
 
 	g_debug = DEBUG;
 
-	X("%.0x", 123);
+	/*X("%.0x", 123);
 	X("%d", 0);
 	X("%d", -2147483647 - 1);
 
@@ -53,15 +53,6 @@ int
 	X("%-%", 0);
 	X("%0%", 0);
 	X("%3%", 0);
-	X("%10b", 0);
-
-
-
-	/*
-		si precision negative precision => width traité dans flags
-		precision => 0 apres le x
-		precision vient reduire la width
-		precision avec flag 0 devient width
-
-	*/
+	X("%10b", 0);*/
+	X("%03*.0u", 3, 2147483647));
 }
