@@ -1,7 +1,16 @@
 NAME		= libftprintf.a
 LIBFT		= libft
 LIBFT_LIB	= libft.a
-SRCS		= ft_printf.c ft_printf_flag_handler.c ft_printf_conv_handler.c
+SRCS		= ft_printf.c \
+			ft_printf_flag_handler.c \
+			ft_printf_conv_handler.c \
+			ft_printf_conv_s.c \
+			ft_printf_conv_p.c \
+			ft_printf_conv_x.c \
+			ft_printf_conv_u.c \
+			ft_printf_conv_d_i.c \
+			ft_printf_conv_c_else.c \
+			ft_printf_ints.c
 				
 
 OBJS		= $(SRCS:.c=.o)
@@ -38,6 +47,6 @@ test: all
 	./a.out
 
 norm:
-	norminette -R CheckForbiddenSourceHeader *.c
+	norminette *.[ch]
 
 .PHONY: all clean fclean re .c.o bonus
